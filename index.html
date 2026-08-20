@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Escribo, reviso y aprendo: secuencia didáctica de Lengua Castellana para grado sexto.">
+<title>Escribo, reviso y aprendo | Grado Sexto</title>
+<style>
+:root{
+  --ink:#172033; --muted:#657084; --paper:#fffdf8; --bg:#eef3f7;
+  --primary:#3857d6; --primary2:#6c4bdc; --accent:#f2b84b;
+  --green:#35a77b; --red:#e46b68; --blue:#55a8d8;
+  --shadow:0 16px 40px rgba(30,42,70,.12); --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+button,a{font:inherit}
+button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #e6eaf0}
+.nav{max-width:1180px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:900;letter-spacing:-.03em}.brand span{color:var(--primary)}
+.navlinks{display:flex;gap:8px;flex-wrap:wrap}
+.navlinks button{border:0;background:transparent;color:var(--muted);padding:9px 12px;border-radius:12px}
+.navlinks button:hover{background:#f0f3fb;color:var(--primary)}
+main{max-width:1180px;margin:auto;padding:0 20px 70px}
+.hero{min-height:78vh;display:grid;place-items:center;padding:65px 0}
+.hero-card{width:100%;border-radius:34px;padding:56px;position:relative;overflow:hidden;background:linear-gradient(135deg,#17254f,#3857d6 55%,#6c4bdc);color:white;box-shadow:var(--shadow)}
+.hero-card:before,.hero-card:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.09)}
+.hero-card:before{width:360px;height:360px;right:-120px;top:-130px}.hero-card:after{width:240px;height:240px;left:-120px;bottom:-130px}
+.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;opacity:.85}
+h1{font-size:clamp(2.5rem,6vw,5rem);line-height:.98;letter-spacing:-.055em;margin:14px 0 20px;max-width:850px}
+.hero p{font-size:1.15rem;max-width:760px;color:#e9edff}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{transform:translateY(-2px)}.btn.light{background:white;color:var(--primary)}.btn.ghost{background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.25)}
+.section{padding:70px 0}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:25px}
+h2{font-size:clamp(1.8rem,4vw,3rem);line-height:1.05;letter-spacing:-.04em;margin:0 0 10px}
+.lead{color:var(--muted);max-width:760px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--paper);border:1px solid #e6e9ee;border-radius:var(--radius);padding:22px;box-shadow:0 8px 25px rgba(30,42,70,.05)}
+.card h3{margin:8px 0}.icon{font-size:2rem}
+.path{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.path .step{min-height:180px}.step button{width:100%;height:100%;text-align:left;background:var(--paper);border:1px solid #e4e8ef;border-radius:20px;padding:20px;box-shadow:0 8px 22px rgba(30,42,70,.05);transition:.2s}
+.step button:hover{transform:translateY(-4px);border-color:#b9c4ef}.num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#edf0ff;color:var(--primary);font-weight:900}
+.progress-wrap{background:white;border-radius:18px;padding:16px;margin:18px 0;border:1px solid #e5e8ef}
+.progress{height:12px;background:#e9edf3;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--primary));width:0;transition:.4s}
+.phase{display:none;margin-top:24px}.phase.active{display:block}
+.phase-nav{display:flex;justify-content:space-between;gap:10px;margin-top:25px}
+.notice{padding:18px 20px;border-radius:18px;background:#fff6d9;border-left:5px solid var(--accent);margin:16px 0}
+.warning{background:#fff0ef;border-left-color:var(--red)}.success{background:#ecf8f2;border-left-color:var(--green)}.info{background:#edf7ff;border-left-color:var(--blue)}
+.checklist{display:grid;gap:10px}.check{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:1px solid #e3e7ee;border-radius:14px;background:white}
+.check input{width:19px;height:19px;margin-top:3px;accent-color:var(--green)}
+.prompt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.prompt-btn{border:1px solid #dfe4ef;background:white;border-radius:16px;padding:16px;text-align:left;font-weight:800;color:var(--ink)}
+.prompt-btn:hover{border-color:var(--primary);color:var(--primary)}
+.prompt-content{display:none;margin-top:15px}.prompt-content.show{display:block}
+textarea{width:100%;min-height:130px;border:1px solid #dce1e9;border-radius:14px;padding:14px;font:inherit;resize:vertical}
+input[type=text]{width:100%;padding:12px 14px;border:1px solid #dce1e9;border-radius:12px;font:inherit}
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+label{font-weight:750;display:block;margin-bottom:7px}
+.small{font-size:.9rem;color:var(--muted)}
+.teacher{background:linear-gradient(180deg,#f4f2ff,#fff)}
+footer{background:#141b2d;color:#dce3f3;padding:35px 20px}.footer-inner{max-width:1180px;margin:auto}
+.modal{position:fixed;inset:0;background:rgba(8,14,30,.62);display:none;place-items:center;z-index:50;padding:20px}.modal.open{display:grid}
+.modal-box{background:white;max-width:760px;width:100%;max-height:88vh;overflow:auto;border-radius:24px;padding:28px;box-shadow:var(--shadow)}
+.modal-close{float:right;border:0;background:#edf0f5;border-radius:50%;width:36px;height:36px}
+.tabrow{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tab{border:1px solid #dfe4ec;background:white;padding:9px 13px;border-radius:12px}.tab.active{background:var(--primary);color:white}
+.kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.kpi .card strong{display:block;font-size:2rem}
+@media(max-width:850px){.path{grid-template-columns:repeat(2,1fr)}.hero-card{padding:34px 25px}.kpi{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}}
+@media(max-width:560px){.path{grid-template-columns:1fr}.navlinks{display:none}.hero{padding:30px 0}.section{padding:45px 0}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav">
+    <div class="brand">✍️ <span>Escribo,</span> reviso y aprendo</div>
+    <div class="navlinks">
+      <button onclick="go('inicio')">Inicio</button>
+      <button onclick="go('estudiante')">Estudiante</button>
+      <button onclick="go('docente')">Docente</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section id="inicio" class="hero">
+  <div class="hero-card">
+    <div class="eyebrow">Colegio Miguel de Cervantes Saavedra I.E.D. · Lengua Castellana · Grado Sexto · 2026</div>
+    <h1>Escribo, reviso y aprendo</h1>
+    <p>La inteligencia artificial como andamio escritural. Un recorrido para escribir un cuento, revisarlo, tomar decisiones y mejorar el propio texto.</p>
+    <div class="cta-row">
+      <button class="btn light" onclick="go('estudiante')">👩‍🎓 Entrar como estudiante</button>
+      <button class="btn ghost" onclick="go('docente')">👩‍🏫 Entrar como docente</button>
+    </div>
+    <div class="notice info" style="margin-top:25px;color:var(--ink);background:#f2f6ff;border:0">
+      <strong>Idea central:</strong> tú eres el autor. La IA pregunta, orienta y ayuda a revisar; no sustituye tu escritura.
+    </div>
+  </div>
+</section>
+
+<section id="estudiante" class="section">
+  <div class="section-head">
+    <div><div class="eyebrow" style="color:var(--primary)">Ruta del estudiante</div><h2>Tu camino de escritura</h2>
+    <p class="lead">Avanza paso a paso. Cada etapa te prepara para la siguiente.</p></div>
+  </div>
+  <div class="progress-wrap"><div style="display:flex;justify-content:space-between"><strong>Progreso</strong><span id="progressText">0 / 8</span></div><div class="progress"><i id="progressBar"></i></div></div>
+
+  <div class="path">
+    <div class="step"><button onclick="openPhase(1)"><span class="num">1</span><div class="icon">🧠</div><h3>Me preparo</h3><p>Construyo mi plan para el cuento.</p></button></div>
+    <div class="step"><button onclick="openPhase(2)"><span class="num">2</span><div class="icon">✍️</div><h3>Escribo</h3><p>Produzco mi primer borrador sin IA.</p></button></div>
+    <div class="step"><button onclick="openPhase(3)"><span class="num">3</span><div class="icon">🔍</div><h3>Reviso</h3><p>Compruebo mi borrador.</p></button></div>
+    <div class="step"><button onclick="openPhase(4)"><span class="num">4</span><div class="icon">🤖</div><h3>Uso la IA</h3><p>Elijo un prompt para recibir preguntas.</p></button></div>
+    <div class="step"><button onclick="openPhase(5)"><span class="num">5</span><div class="icon">✏️</div><h3>Reescribo</h3><p>Decido qué sugerencias utilizar.</p></button></div>
+    <div class="step"><button onclick="openPhase(6)"><span class="num">6</span><div class="icon">⭐</div><h3>Versión final</h3><p>Preparo y guardo mi texto final.</p></button></div>
+    <div class="step"><button onclick="openPhase(7)"><span class="num">7</span><div class="icon">📊</div><h3>Evalúo</h3><p>Reviso los criterios de calidad.</p></button></div>
+    <div class="step"><button onclick="openPhase(8)"><span class="num">8</span><div class="icon">💭</div><h3>Reflexiono</h3><p>Analizo cómo mejoré.</p></button></div>
+  </div>
+
+  <div id="phase1" class="phase active card">
+    <h2>🧠 Fase 1 · Me preparo</h2>
+    <p class="lead">Antes de escribir, construye el plan de tu cuento.</p>
+    <div class="notice info"><strong>Recuerda:</strong> cuento narrativo, mínimo 200 palabras, 2–4 personajes y elementos obligatorios: lugar, tiempo, narrador, conflicto y desenlace.</div>
+    <div class="formgrid">
+      <div><label>¿Quién cuenta tu historia?</label><input type="text" placeholder="Primera persona, testigo, tercera persona..."></div>
+      <div><label>¿Dónde ocurre?</label><input type="text" placeholder="Escribe el lugar"></div>
+      <div><label>¿En qué época ocurre?</label><input type="text" placeholder="Época o momento"></div>
+      <div><label>¿Cuánto dura?</label><input type="text" placeholder="Un día, una semana..."></div>
+      <div><label>Personaje protagonista</label><input type="text" placeholder="Nombre y características"></div>
+      <div><label>¿Cuál es el conflicto?</label><input type="text" placeholder="El problema central"></div>
+    </div>
+    <div class="formgrid" style="margin-top:14px">
+      <div><label>INICIO · ¿Qué sucede?</label><textarea placeholder="Presenta personajes, lugar y situación inicial."></textarea></div>
+      <div><label>NUDO · ¿Qué sucede?</label><textarea placeholder="Presenta y complica el conflicto."></textarea></div>
+      <div><label>DESENLACE · ¿Qué sucede?</label><textarea placeholder="Resuelve el conflicto y cierra la historia."></textarea></div>
+    </div>
+    <div class="phase-nav"><span></span><button class="btn" style="background:var(--primary);color:white" onclick="completePhase(1)">Terminé mi planeación →</button></div>
+  </div>
+
+  <div id="phase2" class="phase card">
+    <h2>✍️ Fase 2 · Escribo</h2>
+    <div class="notice warning"><strong>🚫 Todavía no uses Copilot.</strong> Primero debes producir tu primer borrador completo con tus propias ideas.</div>
+    <div class="cards">
+      <div class="card"><div class="icon">🟢</div><h3>Párrafo 1 · Inicio</h3><p>Incluye lugar, tiempo, personaje principal y descripción del espacio.</p></div>
+      <div class="card"><div class="icon">🟡</div><h3>Párrafo 2 · Conflicto</h3><p>Presenta el problema, la reacción y las acciones del protagonista.</p></div>
+      <div class="card"><div class="icon">🔴</div><h3>Párrafo 3 · Clímax y desenlace</h3><p>Incluye el momento de máxima tensión, la resolución y el cierre.</p></div>
+    </div>
+    <div class="notice success"><strong>Meta:</strong> mínimo 200 palabras.</div>
+    <button class="btn" style="background:var(--green);color:white" onclick="completePhase(2)">Ya terminé mi primer borrador →</button>
+  </div>
+
+  <div id="phase3" class="phase card">
+    <h2>🔍 Fase 3 · Reviso mi primer borrador</h2>
+    <p>Marca cada criterio cuando lo hayas comprobado.</p>
+    <div class="checklist" id="checklist">
+      <label class="check"><input type="checkbox"> Mi cuento tiene 200 palabras o más.</label>
+      <label class="check"><input type="checkbox"> Describí claramente el lugar.</label>
+      <label class="check"><input type="checkbox"> Indiqué la época y el momento.</label>
+      <label class="check"><input type="checkbox"> Describí el espacio con detalles.</label>
+      <label class="check"><input type="checkbox"> Tengo al menos dos personajes bien definidos.</label>
+      <label class="check"><input type="checkbox"> Hay un conflicto claro.</label>
+      <label class="check"><input type="checkbox"> Mi cuento tiene inicio, nudo y desenlace.</label>
+      <label class="check"><input type="checkbox"> Usé conectores para enlazar ideas.</label>
+      <label class="check"><input type="checkbox"> Revisé ortografía, tildes, mayúsculas y puntuación.</label>
+      <label class="check"><input type="checkbox"> Mi título es original y llama la atención.</label>
+    </div>
+    <div class="phase-nav"><span></span><button class="btn" style="background:var(--primary);color:white" onclick="completePhase(3)">Mi borrador está listo →</button></div>
+  </div>
+
+  <div id="phase4" class="phase card">
+    <h2>🤖 Fase 4 · Ahora sí: uso la IA</h2>
+    <div class="notice warning"><strong>Regla de oro:</strong> la IA entra después de tu borrador. Tú decides qué cambiar y cómo.</div>
+    <div class="checklist">
+      <label class="check"><input type="checkbox"> Ya escribí mi borrador completo.</label>
+      <label class="check"><input type="checkbox"> No utilicé IA para escribirlo.</label>
+      <label class="check"><input type="checkbox"> Entiendo que Copilot no escribirá mi cuento.</label>
+      <label class="check"><input type="checkbox"> Yo decidiré qué sugerencias utilizar.</label>
+    </div>
+    <h3 style="margin-top:25px">🤖 Banco de prompts</h3>
+    <div class="prompt-grid">
+      <button class="prompt-btn" onclick="showPrompt(1)">🔎 Revisión global</button>
+      <button class="prompt-btn" onclick="showPrompt(2)">🔤 Ortografía</button>
+      <button class="prompt-btn" onclick="showPrompt(3)">🔣 Puntuación</button>
+      <button class="prompt-btn" onclick="showPrompt(4)">🧠 Coherencia</button>
+      <button class="prompt-btn" onclick="showPrompt(5)">🔗 Cohesión</button>
+      <button class="prompt-btn" onclick="showPrompt(6)">🧩 Estructura narrativa</button>
+      <button class="prompt-btn" onclick="showPrompt(7)">👥 Personajes</button>
+      <button class="prompt-btn" onclick="showPrompt(8)">🌎 Tiempo y espacio</button>
+      <button class="prompt-btn" onclick="showPrompt(9)">🎨 Descripciones</button>
+      <button class="prompt-btn" onclick="showPrompt(10)">📚 Vocabulario</button>
+      <button class="prompt-btn" onclick="showPrompt(11)">💭 Autoevaluación</button>
+      <button class="prompt-btn" onclick="showPrompt(12)">⭐ Revisión final</button>
+    </div>
+    <div id="promptArea" class="prompt-content card"></div>
+    <div class="phase-nav"><span></span><button class="btn" style="background:var(--primary);color:white" onclick="completePhase(4)">Ya interactué con la IA →</button></div>
+  </div>
+
+  <div id="phase5" class="phase card">
+    <h2>✏️ Fase 5 · Reescribo</h2>
+    <p>Lee las preguntas o pistas de Copilot y toma tus propias decisiones.</p>
+    <div class="notice info"><strong>La IA no reescribe tu cuento.</strong> Tú decides qué sugerencia aceptar, cuál rechazar y qué modificar.</div>
+    <div class="formgrid">
+      <div><label>¿Qué sugerencia decidí utilizar?</label><textarea placeholder="Escribe aquí..."></textarea></div>
+      <div><label>¿Por qué decidí utilizarla?</label><textarea placeholder="Explica tu decisión..."></textarea></div>
+    </div>
+    <p class="small">Guarda tu nueva versión como <strong>Versión 2</strong>.</p>
+    <button class="btn" style="background:var(--primary);color:white" onclick="completePhase(5)">Terminé mi versión 2 →</button>
+  </div>
+
+  <div id="phase6" class="phase card">
+    <h2>⭐ Fase 6 · Construyo mi versión final</h2>
+    <p>Revisa nuevamente tu versión 2 con el nuevo prompt entregado por tu docente. Después guarda el texto como <strong>Versión Final</strong>.</p>
+    <div class="cards">
+      <div class="card"><h3>Versión 1</h3><p>Mi primer intento.</p></div>
+      <div class="card"><h3>Versión 2</h3><p>Mi texto mejorado a partir de la revisión.</p></div>
+      <div class="card"><h3>Versión Final</h3><p>Mi producción final, escrita por mí.</p></div>
+    </div>
+    <button class="btn" style="background:var(--green);color:white;margin-top:18px" onclick="completePhase(6)">Tengo mi versión final →</button>
+  </div>
+
+  <div id="phase7" class="phase card">
+    <h2>📊 Fase 7 · Evalúo</h2>
+    <p>Consulta los criterios de evaluación antes de entregar tu cuento.</p>
+    <div class="cards">
+      <div class="card"><h3>📝 Estructura</h3><p>¿Mi cuento cumple la estructura narrativa?</p></div>
+      <div class="card"><h3>🔗 Cohesión</h3><p>¿Las ideas están conectadas?</p></div>
+      <div class="card"><h3>🧠 Coherencia</h3><p>¿La historia se entiende?</p></div>
+      <div class="card"><h3>✨ Lenguaje</h3><p>¿Mi vocabulario y descripciones enriquecen el texto?</p></div>
+    </div>
+    <div class="notice info">En la implementación original, el estudiante utiliza la rúbrica y el prompt proporcionados por el docente, y guarda los resultados para el análisis posterior.</div>
+    <button class="btn" style="background:var(--primary);color:white" onclick="completePhase(7)">Ya revisé mi evaluación →</button>
+  </div>
+
+  <div id="phase8" class="phase card">
+    <h2>💭 Fase 8 · Reflexiono</h2>
+    <p>Compara tus tres versiones y piensa en tu proceso.</p>
+    <div class="formgrid">
+      <div><label>¿Cómo mejoré mi escritura?</label><textarea></textarea></div>
+      <div><label>¿Qué debo seguir reforzando?</label><textarea></textarea></div>
+      <div><label>¿Qué sugerencia de la IA utilicé?</label><textarea></textarea></div>
+      <div><label>¿Por qué fue útil?</label><textarea></textarea></div>
+    </div>
+    <div class="notice success"><strong>🏁 ¡Completaste la ruta!</strong> Escribir, revisar, decidir y reflexionar también es aprender.</div>
+    <button class="btn" style="background:var(--green);color:white" onclick="completePhase(8)">Finalizar experiencia ✓</button>
+  </div>
+</section>
+
+<section id="docente" class="section teacher">
+  <div class="section-head">
+    <div><div class="eyebrow" style="color:var(--primary)">Modo docente</div><h2>Guía de implementación</h2>
+    <p class="lead">La secuencia está pensada para que otro docente pueda comprenderla y replicarla.</p></div>
+  </div>
+  <div class="kpi">
+    <div class="card"><strong>3</strong>sesiones</div>
+    <div class="card"><strong>90–105</strong>min aprox. por sesión</div>
+    <div class="card"><strong>1</strong>proceso: borrador → IA → reescritura</div>
+  </div>
+  <div class="cards" style="margin-top:18px">
+    <div class="card"><div class="icon">🎯</div><h3>Propósito</h3><p>Fortalecer la competencia comunicativa escritural mediante la producción, revisión, corrección y reescritura de textos narrativos.</p></div>
+    <div class="card"><div class="icon">🤖</div><h3>Rol de la IA</h3><p>Andamiaje cognitivo: preguntas, pistas y observaciones sobre coherencia, cohesión, estilo y aspectos lingüísticos, sin sustituir la autoría.</p></div>
+    <div class="card"><div class="icon">👩‍🏫</div><h3>Rol docente</h3><p>Modelar, orientar, supervisar la interacción con IA, acompañar la toma de decisiones y analizar las evidencias del proceso.</p></div>
+  </div>
+  <div class="section" style="padding-bottom:0">
+    <h2>🗓️ Implementación por sesiones</h2>
+    <div class="cards">
+      <div class="card"><h3>Sesión 1 · Producción inicial</h3><p><strong>Apertura:</strong> saberes previos, cuento modelo, patrón escritural y rúbrica.</p><p><strong>Desarrollo:</strong> primer borrador sin IA.</p><p><strong>Cierre:</strong> socialización, autoevaluación del patrón y guardado.</p></div>
+      <div class="card"><h3>Sesión 2 · Revisión con IA</h3><p><strong>Apertura:</strong> protocolo y primer contacto con Copilot.</p><p><strong>Desarrollo:</strong> Versión 1 → prompt → preguntas/pistas → Versión 2.</p><p><strong>Cierre:</strong> socialización de la experiencia.</p></div>
+      <div class="card"><h3>Sesión 3 · Final y metacognición</h3><p><strong>Desarrollo:</strong> revisión final, Versión Final y rúbrica.</p><p><strong>Cierre:</strong> comparación de versiones, metacognición y conclusiones.</p></div>
+    </div>
+  </div>
+  <div class="section" style="padding-bottom:0">
+    <h2>🧰 Recursos y anexos</h2>
+    <div class="cards">
+      <div class="card"><h3>📄 Anexo 1</h3><p><strong>Patrón escritural:</strong> planeación, escritura y revisión del cuento.</p><button class="btn" style="background:#edf0ff;color:var(--primary)" onclick="openInfo('anexo1')">Ver descripción</button></div>
+      <div class="card"><h3>📊 Anexo 2</h3><p><strong>Rúbrica de evaluación</strong> del producto final.</p><button class="btn" style="background:#edf0ff;color:var(--primary)" onclick="openInfo('anexo2')">Ver descripción</button></div>
+      <div class="card"><h3>🤖 Anexo 3</h3><p><strong>Banco de prompts</strong> para revisión y autoevaluación.</p><button class="btn" style="background:#edf0ff;color:var(--primary)" onclick="openInfo('anexo3')">Abrir prompts</button></div>
+    </div>
+  </div>
+  <div class="section" style="padding-bottom:0">
+    <h2>📖 Protocolo de uso de IA</h2>
+    <div class="notice warning"><strong>Regla pedagógica:</strong> el estudiante escribe primero; la IA interviene después. No se permite copiar como propio un texto generado por IA.</div>
+    <div class="cards">
+      <div class="card"><h3>Autoría</h3><p>El estudiante debe escribir su propio borrador.</p></div>
+      <div class="card"><h3>Trazabilidad</h3><p>Debe registrar qué sugerencia acogió y por qué.</p></div>
+      <div class="card"><h3>Supervisión</h3><p>El docente supervisa la herramienta y revisa interacciones.</p></div>
+      <div class="card"><h3>Privacidad</h3><p>No introducir datos personales adicionales en los chats.</p></div>
+    </div>
+  </div>
+  <div class="section" style="padding-bottom:0">
+    <h2>♿ Adaptaciones</h2>
+    <div class="cards">
+      <div class="card"><h3>Conectividad limitada</h3><p>El borrador puede producirse sin conexión y la interacción con IA realizarse posteriormente.</p></div>
+      <div class="card"><h3>Grupos numerosos</h3><p>Se puede trabajar en parejas alternando escritura y formulación de prompts.</p></div>
+      <div class="card"><h3>Inclusión</h3><p>Adaptar el patrón y formular preguntas más concretas y guiadas cuando sea necesario.</p></div>
+      <div class="card"><h3>Otras herramientas</h3><p>Si cambia la herramienta institucional, conservar el protocolo: retroalimentación mediante preguntas, no corrección directa.</p></div>
+    </div>
+  </div>
+  <div class="section" style="padding-bottom:0">
+    <h2>📈 Resultados de implementación</h2>
+    <div class="card">
+      <p class="lead">Esta sección queda preparada para incorporar los datos de tus archivos Excel: desempeño, progreso entre versiones, resultados de rúbrica y demás evidencias de aplicación.</p>
+      <div class="notice info"><strong>Próxima integración:</strong> cuando incorporemos tus Excel, podremos transformar sus datos en gráficos interactivos sin alterar los resultados originales.</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="footer-inner"><strong>Escribo, reviso y aprendo</strong><p>Colegio Miguel de Cervantes Saavedra I.E.D. · Lengua Castellana · Grado Sexto · 2026</p><p class="small" style="color:#aeb8cc">La inteligencia artificial es un apoyo para pensar mejor la escritura, no un reemplazo de la creatividad.</p></div></footer>
+
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><div class="modal-box"><button class="modal-close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+
+<script>
+const prompts = {
+1:["Revisión global",`Lee mi cuento como si fueras un lector de sexto grado. No me digas los errores todavía. Primero responde únicamente estas preguntas:
+• ¿La historia se entiende desde el principio hasta el final?
+• ¿Hay alguna parte que te genere confusión?
+• ¿En qué momento sentiste que faltaba información?
+• ¿Qué parte te pareció más interesante?
+No corrijas nada. Solo haz preguntas para que yo descubra qué puedo mejorar.`],
+2:["Ortografía",`Revisa únicamente la ortografía. No escribas las palabras correctas.
+• Indícame cuántas palabras presentan un posible error.
+• Señálame solamente la oración donde aparece cada una.
+• Dime qué regla ortográfica debería revisar (tildes, uso de b/v, g/j, h, mayúsculas, etc.).
+• Permíteme encontrar la respuesta antes de decirme si acerté.`],
+3:["Signos de puntuación",`Analiza únicamente los signos de puntuación. No los corrijas.
+Pregúntame:
+• ¿En qué parte sería conveniente hacer una pausa?
+• ¿Qué oración resulta demasiado larga?
+• ¿Dónde podría faltar una coma?
+• ¿Dónde terminaría una idea completa?
+Solo dame pistas.`],
+4:["Coherencia",`Analiza la coherencia de mi cuento. No cambies ninguna oración. Ayúdame respondiendo:
+• ¿Hay acciones que suceden sin explicación?
+• ¿Existe alguna contradicción?
+• ¿Los personajes actúan de manera lógica?
+• ¿El final responde al conflicto planteado?
+Haz preguntas para que yo descubra las inconsistencias.`],
+5:["Cohesión",`Revisa únicamente la cohesión. No cambies el texto. Dime:
+• ¿Dónde notas ideas desconectadas?
+• ¿Qué párrafo necesita un mejor enlace?
+• ¿En qué lugar podría faltar un conector?
+• ¿Estoy repitiendo demasiado una palabra?
+No me digas cuál conector usar.`],
+6:["Estructura narrativa",`Comprueba si mi cuento cumple la estructura narrativa. Indícame únicamente:
+• ¿Dónde identificas el inicio?
+• ¿Dónde comienza el conflicto?
+• ¿Cuál parece ser el clímax?
+• ¿Dónde termina la historia?
+Si alguna parte es débil, hazme preguntas para fortalecerla.`],
+7:["Personajes",`Analiza los personajes. No escribas nuevas descripciones. Ayúdame a descubrir:
+• ¿El protagonista tiene un objetivo claro?
+• ¿Los personajes secundarios cumplen una función?
+• ¿Falta describir a alguno?
+• ¿Todos participan realmente en la historia?`],
+8:["Tiempo y espacio",`Revisa únicamente el tiempo y el espacio. Hazme preguntas para verificar:
+• ¿Queda claro dónde ocurre la historia?
+• ¿Se entiende cuándo ocurre?
+• ¿El espacio ayuda a imaginar el escenario?
+• ¿Existen cambios de lugar sin explicación?`],
+9:["Descripciones",`Analiza únicamente las descripciones. No escribas nuevas descripciones. Pregúntame:
+• ¿Qué podría imaginar mejor el lector?
+• ¿Qué sentidos estoy utilizando?
+• ¿Hay lugares demasiado generales?
+• ¿Qué personaje necesita más detalles?`],
+10:["Vocabulario",`Revisa únicamente el vocabulario. No sustituyas palabras. Indícame:
+• ¿Qué palabras repito demasiado?
+• ¿Dónde utilizo palabras poco precisas?
+• ¿Qué parte podría enriquecerse con un vocabulario más variado?
+Permíteme encontrar alternativas.`],
+11:["Autoevaluación",`Después de leer mi cuento, no me des una calificación. Hazme diez preguntas para que yo mismo evalúe mi texto. Las preguntas deben hacerme reflexionar sobre:
+• claridad,
+• creatividad,
+• organización,
+• conflicto,
+• personajes,
+• ortografía,
+• puntuación,
+• conectores,
+• vocabulario,
+• enseñanza final.`],
+12:["Revisión final",`Realiza una revisión completa, pero no corrijas el texto. Organiza tus observaciones en esta tabla:
+Aspecto | ¿Está bien? | Pista para mejorar
+Ortografía
+Puntuación
+Cohesión
+Coherencia
+Personajes
+Tiempo
+Espacio
+Conflicto
+Desenlace
+Vocabulario
+En la columna "Pista para mejorar" solo puedes formular preguntas u orientaciones generales. Está prohibido reescribir mi cuento o mostrarme la respuesta correcta.`]
+};
+let completed = JSON.parse(localStorage.getItem("era-progress")||"[]");
+
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"});}
+function openPhase(n){
+  document.querySelectorAll(".phase").forEach(p=>p.classList.remove("active"));
+  document.getElementById("phase"+n).classList.add("active");
+  document.getElementById("phase"+n).scrollIntoView({behavior:"smooth",block:"center"});
+}
+function completePhase(n){
+  if(!completed.includes(n)) completed.push(n);
+  localStorage.setItem("era-progress",JSON.stringify(completed));
+  updateProgress();
+  if(n<8) openPhase(n+1); else alert("¡Felicitaciones! Completaste tu ruta de escritura.");
+}
+function updateProgress(){
+  const count=completed.length;
+  document.getElementById("progressText").textContent=count+" / 8";
+  document.getElementById("progressBar").style.width=(count/8*100)+"%";
+}
+function showPrompt(n){
+  const [title,text]=prompts[n];
+  const area=document.getElementById("promptArea");
+  area.classList.add("show");
+  area.innerHTML=`<h3>🤖 ${title}</h3><p class="small">Copia este prompt en Copilot. Recuerda que la IA debe ayudarte mediante preguntas y pistas.</p><textarea id="promptText" readonly>${text}</textarea><button class="btn" style="background:var(--primary);color:white;margin-top:10px" onclick="copyPrompt()">📋 Copiar prompt</button>`;
+  area.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function copyPrompt(){
+  const t=document.getElementById("promptText");
+  navigator.clipboard?.writeText(t.value).then(()=>alert("Prompt copiado."));
+}
+function openInfo(type){
+ let title="",body="";
+ if(type==="anexo1"){title="Anexo 1 · Patrón escritural";body="<p>Herramienta para planear, escribir y revisar el cuento. Incluye narrador, lugar, tiempo, personajes, conflicto, estructura narrativa, construcción de los tres párrafos y lista de revisión.</p>";}
+ if(type==="anexo2"){title="Anexo 2 · Rúbrica";body="<p>Instrumento para evaluar el producto final. En esta versión web queda preparada como sección de consulta; los criterios completos pueden incorporarse cuando se integre el archivo original de la rúbrica.</p>";}
+ if(type==="anexo3"){title="Anexo 3 · Banco de prompts";body="<p>Contiene 12 prompts para revisión global, ortografía, puntuación, coherencia, cohesión, estructura narrativa, personajes, tiempo y espacio, descripciones, vocabulario, autoevaluación y revisión final.</p>";}
+ document.getElementById("modalContent").innerHTML="<h2>"+title+"</h2>"+body;
+ document.getElementById("modal").classList.add("open");
+}
+function closeModal(){document.getElementById("modal").classList.remove("open");}
+updateProgress();
+</script>
+</body>
+</html>
